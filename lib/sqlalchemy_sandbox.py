@@ -6,7 +6,10 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 class Student(Base):
-    pass
+    __tablename__ ='student'
+    id = Column(Integer, primary_key=True)
+    name = Column(String())
 
 if __name__ == '__main__':
-    pass
+    engine = create_engine('sqlite:///student.db')
+    Base.metadata.create_all(engine)
